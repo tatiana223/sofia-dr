@@ -35,38 +35,33 @@
   </script>
 
   <style>
-    /* Ken Burns cinematic motion effect */
     @keyframes kenBurnsSlow {
-      0% { transform: scale(1.02) translate(0%, 0%); }
-      50% { transform: scale(1.08) translate(-1%, 0.8%); }
-      100% { transform: scale(1.02) translate(0%, 0%); }
+      0% { transform: scale(1.0); }
+      50% { transform: scale(1.04); }
+      100% { transform: scale(1.0); }
     }
 
     .ken-burns {
-      animation: kenBurnsSlow 24s ease-in-out infinite alternate;
+      animation: kenBurnsSlow 20s ease-in-out infinite alternate;
     }
 
-    /* Subtle film grain */
     .film-grain {
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
     }
 
-    /* Smooth crossfade classes */
     .slide-item {
       opacity: 0;
       pointer-events: none;
-      transition: opacity 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 800ms cubic-bezier(0.4, 0, 0.2, 1);
     }
     .slide-item.active {
       opacity: 1;
       pointer-events: auto;
     }
 
-    /* Hide scrollbars cleanly */
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* Mobile viewport and notch fixes */
     .safe-top {
       padding-top: max(1rem, env(safe-area-inset-top));
     }
@@ -79,7 +74,7 @@
 <body class="h-[100dvh] w-full bg-cinemaDark text-cream font-sans overflow-hidden select-none">
   <div class="fixed inset-0 z-20 pointer-events-none film-grain"></div>
 
-  <!-- Top Navigation & Controls Bar -->
+  <!-- Top Navigation Bar -->
   <header class="fixed top-0 inset-x-0 z-30 flex items-center justify-between px-4 sm:px-6 md:px-10 safe-top pb-4 bg-gradient-to-b from-cinemaDark/95 via-cinemaDark/60 to-transparent backdrop-blur-[2px]">
     <div class="flex items-center gap-2 sm:gap-4">
       <span class="font-serif italic text-2xl md:text-3xl text-cream tracking-wide">Sofia</span>
@@ -89,7 +84,6 @@
 
     <!-- Right Controls -->
     <div class="flex items-center gap-2 sm:gap-3 md:gap-4">
-      <!-- Autoplay Toggle Button -->
       <button 
         id="autoplayToggle" 
         onclick="toggleAutoplay()" 
@@ -101,7 +95,6 @@
         <span id="autoplayText" class="hidden sm:inline">Слайд-шоу</span>
       </button>
 
-      <!-- Jump to Letter Button -->
       <button 
         onclick="goToSlide(6)" 
         class="flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-accentClay/90 hover:bg-accentClay text-cream text-[11px] sm:text-xs font-medium tracking-wider uppercase transition-all duration-200 shadow-lg shadow-accentClay/20"
@@ -115,90 +108,65 @@
   <main id="slidesContainer" class="relative w-full h-[100dvh]">
 
     <!-- Slide 01: BMSTU Hallway Corridor -->
-    <section class="slide-item active absolute inset-0 w-full h-full" data-index="0" data-title="Прогулки между парами" data-tag="МГТУ им. Баумана">
-      <div class="absolute inset-0 overflow-hidden">
-        <img 
-          src="Gemini_Generated_Image_xgmui6xgmui6xgmu.jpg" 
-          alt="Коридоры Главного Здания" 
-          class="w-full h-full object-cover object-center ken-burns"
-        >
+    <section class="slide-item active absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden" data-index="0" data-title="Прогулки между парами" data-tag="МГТУ им. Баумана">
+      <img src="Gemini_Generated_Image_xgmui6xgmui6xgmu.jpg" alt="" class="absolute inset-0 w-full h-full object-cover filter blur-2xl opacity-35 scale-110 pointer-events-none">
+      <div class="relative z-10 w-full h-full flex items-center justify-center p-2 sm:p-6 md:p-8">
+        <img src="Gemini_Generated_Image_xgmui6xgmui6xgmu.jpg" alt="Коридоры Главного Здания" class="max-w-full max-h-[75dvh] sm:max-h-[85dvh] object-contain rounded-xl shadow-2xl ken-burns">
       </div>
-      <div class="absolute inset-0 bg-gradient-to-t from-cinemaDark via-cinemaDark/30 to-cinemaDark/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-cinemaDark via-transparent to-cinemaDark/40 pointer-events-none"></div>
     </section>
 
     <!-- Slide 02: Wooden Lecture Hall -->
-    <section class="slide-item absolute inset-0 w-full h-full" data-index="1" data-title="Лекционки" data-tag="Семинары и кофе">
-      <div class="absolute inset-0 overflow-hidden">
-        <img 
-          src="Gemini_Generated_Image_ispmo4ispmo4ispm (1).jpg" 
-          alt="Большая лекционная" 
-          class="w-full h-full object-cover object-center ken-burns"
-        >
+    <section class="slide-item absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden" data-index="1" data-title="Лекционки" data-tag="Семинары и кофе">
+      <img src="Gemini_Generated_Image_ispmo4ispmo4ispm (1).jpg" alt="" class="absolute inset-0 w-full h-full object-cover filter blur-2xl opacity-35 scale-110 pointer-events-none">
+      <div class="relative z-10 w-full h-full flex items-center justify-center p-2 sm:p-6 md:p-8">
+        <img src="Gemini_Generated_Image_ispmo4ispmo4ispm (1).jpg" alt="Большая лекционная" class="max-w-full max-h-[75dvh] sm:max-h-[85dvh] object-contain rounded-xl shadow-2xl ken-burns">
       </div>
-      <div class="absolute inset-0 bg-gradient-to-t from-cinemaDark via-cinemaDark/30 to-cinemaDark/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-cinemaDark via-transparent to-cinemaDark/40 pointer-events-none"></div>
     </section>
 
     <!-- Slide 03: Networks Lab -->
-    <section class="slide-item absolute inset-0 w-full h-full" data-index="2" data-title="Веселые сдачи лабораторных по сетям" data-tag="Сдача сетей">
-      <div class="absolute inset-0 overflow-hidden">
-        <img 
-          src="Gemini_Generated_Image_fgxn75fgxn75fgxn.jpg" 
-          alt="Лабораторная по сетям" 
-          class="w-full h-full object-cover object-center ken-burns"
-        >
+    <section class="slide-item absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden" data-index="2" data-title="Веселые сдачи лабораторных по сетям" data-tag="Сдача сетей">
+      <img src="Gemini_Generated_Image_fgxn75fgxn75fgxn.jpg" alt="" class="absolute inset-0 w-full h-full object-cover filter blur-2xl opacity-35 scale-110 pointer-events-none">
+      <div class="relative z-10 w-full h-full flex items-center justify-center p-2 sm:p-6 md:p-8">
+        <img src="Gemini_Generated_Image_fgxn75fgxn75fgxn.jpg" alt="Лабораторная по сетям" class="max-w-full max-h-[75dvh] sm:max-h-[85dvh] object-contain rounded-xl shadow-2xl ken-burns">
       </div>
-      <div class="absolute inset-0 bg-gradient-to-t from-cinemaDark via-cinemaDark/30 to-cinemaDark/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-cinemaDark via-transparent to-cinemaDark/40 pointer-events-none"></div>
     </section>
 
     <!-- Slide 04: Tennis Court -->
-    <section class="slide-item absolute inset-0 w-full h-full" data-index="3" data-title="Теннисный корт" data-tag="На корте">
-      <div class="absolute inset-0 overflow-hidden">
-        <img 
-          src="Gemini_Generated_Image_77mzip77mzip77mz.jpg" 
-          alt="Теннисный корт" 
-          class="w-full h-full object-cover object-center ken-burns"
-        >
+    <section class="slide-item absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden" data-index="3" data-title="Теннисный корт" data-tag="На корте">
+      <img src="Gemini_Generated_Image_77mzip77mzip77mz.jpg" alt="" class="absolute inset-0 w-full h-full object-cover filter blur-2xl opacity-35 scale-110 pointer-events-none">
+      <div class="relative z-10 w-full h-full flex items-center justify-center p-2 sm:p-6 md:p-8">
+        <img src="Gemini_Generated_Image_77mzip77mzip77mz.jpg" alt="Теннисный корт" class="max-w-full max-h-[75dvh] sm:max-h-[85dvh] object-contain rounded-xl shadow-2xl ken-burns">
       </div>
-      <div class="absolute inset-0 bg-gradient-to-t from-cinemaDark via-cinemaDark/30 to-cinemaDark/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-cinemaDark via-transparent to-cinemaDark/40 pointer-events-none"></div>
     </section>
 
     <!-- Slide 05: Night Talks -->
-    <section class="slide-item absolute inset-0 w-full h-full" data-index="4" data-title="Посиделки" data-tag="Ночные разговоры">
-      <div class="absolute inset-0 overflow-hidden">
-        <img 
-          src="Gemini_Generated_Image_s9o0bxs9o0bxs9o0.jpg" 
-          alt="Ночные разговоры" 
-          class="w-full h-full object-cover object-center ken-burns"
-        >
+    <section class="slide-item absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden" data-index="4" data-title="Посиделки" data-tag="Ночные разговоры">
+      <img src="Gemini_Generated_Image_s9o0bxs9o0bxs9o0.jpg" alt="" class="absolute inset-0 w-full h-full object-cover filter blur-2xl opacity-35 scale-110 pointer-events-none">
+      <div class="relative z-10 w-full h-full flex items-center justify-center p-2 sm:p-6 md:p-8">
+        <img src="Gemini_Generated_Image_s9o0bxs9o0bxs9o0.jpg" alt="Ночные разговоры" class="max-w-full max-h-[75dvh] sm:max-h-[85dvh] object-contain rounded-xl shadow-2xl ken-burns">
       </div>
-      <div class="absolute inset-0 bg-gradient-to-t from-cinemaDark via-cinemaDark/30 to-cinemaDark/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-cinemaDark via-transparent to-cinemaDark/40 pointer-events-none"></div>
     </section>
 
     <!-- Slide 06: Graduation at BMSTU -->
-    <section class="slide-item absolute inset-0 w-full h-full" data-index="5" data-title="Защита и выпускной" data-tag="МГТУ им. Баумана">
-      <div class="absolute inset-0 overflow-hidden">
-        <img 
-          src="Gemini_Generated_Image_ds1hqqds1hqqds1h.jpg" 
-          alt="Выпускной у колонн МГТУ" 
-          class="w-full h-full object-cover object-center ken-burns"
-        >
+    <section class="slide-item absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden" data-index="5" data-title="Защита и выпускной" data-tag="МГТУ им. Баумана">
+      <img src="Gemini_Generated_Image_ds1hqqds1hqqds1h.jpg" alt="" class="absolute inset-0 w-full h-full object-cover filter blur-2xl opacity-35 scale-110 pointer-events-none">
+      <div class="relative z-10 w-full h-full flex items-center justify-center p-2 sm:p-6 md:p-8">
+        <img src="Gemini_Generated_Image_ds1hqqds1hqqds1h.jpg" alt="Выпускной у колонн МГТУ" class="max-w-full max-h-[75dvh] sm:max-h-[85dvh] object-contain rounded-xl shadow-2xl ken-burns">
       </div>
-      <div class="absolute inset-0 bg-gradient-to-t from-cinemaDark via-cinemaDark/30 to-cinemaDark/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-cinemaDark via-transparent to-cinemaDark/40 pointer-events-none"></div>
     </section>
 
     <!-- Slide 07: Final Birthday Letter Reveal -->
-    <section class="slide-item absolute inset-0 w-full h-full flex items-center justify-center p-3.5 sm:p-6 md:p-8" data-index="6" data-title="С днем рождения" data-tag="Для Софии">
-      <!-- Atmospheric Backdrop blur -->
-      <div class="absolute inset-0 overflow-hidden opacity-30">
-        <img 
-          src="Gemini_Generated_Image_ds1hqqds1hqqds1h.jpg" 
-          alt="Фоновый кадр" 
-          class="w-full h-full object-cover filter blur-2xl scale-110"
-        >
-      </div>
+    <section class="slide-item absolute inset-0 w-full h-full flex items-center justify-center p-4 sm:p-6 md:p-8" data-index="6" data-title="С днем рождения" data-tag="Для Софии">
+      <img src="Gemini_Generated_Image_ds1hqqds1hqqds1h.jpg" alt="" class="absolute inset-0 w-full h-full object-cover filter blur-2xl opacity-35 scale-110 pointer-events-none">
       <div class="absolute inset-0 bg-cinemaDark/85"></div>
 
-      <!-- Letter Container with Mobile Scroll Support -->
+      <!-- Letter Container -->
       <div class="relative z-10 w-full max-w-2xl max-h-[82dvh] overflow-y-auto no-scrollbar bg-cardBg/95 border border-white/10 backdrop-blur-2xl rounded-3xl p-5 sm:p-10 md:p-14 shadow-2xl flex flex-col items-center text-center">
         <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accentClay/20 border border-accentClay/40 flex items-center justify-center text-accentClay mb-4 sm:mb-6 shrink-0">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
@@ -237,10 +205,10 @@
 
   <!-- Captions -->
   <div id="captionOverlay" class="fixed left-4 sm:left-6 md:left-10 bottom-24 sm:bottom-28 md:bottom-32 z-30 pointer-events-none transition-all duration-700 max-w-[85vw]">
-    <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-[10px] sm:text-[11px] font-mono tracking-widest text-accentGold uppercase mb-1.5 sm:mb-2">
+    <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/15 text-[10px] sm:text-[11px] font-mono tracking-widest text-accentGold uppercase mb-1.5 sm:mb-2 shadow-lg">
       <span id="slideTag">МГТУ им. Баумана</span>
     </div>
-    <h3 id="slideTitle" class="font-serif text-2xl sm:text-4xl md:text-6xl text-cream font-normal tracking-tight drop-shadow-md leading-tight">
+    <h3 id="slideTitle" class="font-serif text-2xl sm:text-4xl md:text-5xl text-cream font-normal tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] leading-tight">
       Коридоры Главного Здания
     </h3>
   </div>
@@ -248,7 +216,7 @@
   <!-- Lateral Navigation Buttons -->
   <button 
     onclick="prevSlide()" 
-    class="fixed left-2 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 md:w-14 md:h-14 rounded-full bg-cinemaDark/50 hover:bg-cinemaDark/80 border border-white/10 backdrop-blur-md flex items-center justify-center text-cream hover:text-accentGold transition-all duration-200 active:scale-95"
+    class="fixed left-2 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 md:w-14 md:h-14 rounded-full bg-cinemaDark/60 hover:bg-cinemaDark/80 border border-white/15 backdrop-blur-md flex items-center justify-center text-cream hover:text-accentGold transition-all duration-200 active:scale-95 shadow-xl"
     title="Предыдущий кадр"
   >
     <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/></svg>
@@ -256,14 +224,14 @@
 
   <button 
     onclick="nextSlide()" 
-    class="fixed right-2 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 md:w-14 md:h-14 rounded-full bg-cinemaDark/50 hover:bg-cinemaDark/80 border border-white/10 backdrop-blur-md flex items-center justify-center text-cream hover:text-accentGold transition-all duration-200 active:scale-95"
+    class="fixed right-2 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 md:w-14 md:h-14 rounded-full bg-cinemaDark/60 hover:bg-cinemaDark/80 border border-white/15 backdrop-blur-md flex items-center justify-center text-cream hover:text-accentGold transition-all duration-200 active:scale-95 shadow-xl"
     title="Следующий кадр"
   >
     <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/></svg>
   </button>
 
   <!-- Bottom Timeline & Filmstrip Bar -->
-  <footer class="fixed bottom-0 inset-x-0 z-30 bg-gradient-to-t from-cinemaDark via-cinemaDark/85 to-transparent pt-4 sm:pt-6 safe-bottom px-4 sm:px-6 md:px-10">
+  <footer class="fixed bottom-0 inset-x-0 z-30 bg-gradient-to-t from-cinemaDark via-cinemaDark/90 to-transparent pt-4 sm:pt-6 safe-bottom px-4 sm:px-6 md:px-10">
     <div class="max-w-6xl mx-auto flex flex-col gap-2.5 sm:gap-3">
       
       <!-- Counter -->
@@ -274,7 +242,7 @@
           <span>07</span>
         </div>
         <div class="flex items-center gap-2">
-          <span class="text-[10px] tracking-widest uppercase opacity-70 hidden sm:inline">← →</span>
+          <span class="text-[10px] tracking-widest uppercase opacity-70 hidden sm:inline">← свайп или стрелки →</span>
         </div>
       </div>
 
@@ -323,7 +291,6 @@
     const totalSlides = slides.length;
     const barFills = document.querySelectorAll('.bar-fill');
     const thumbBtns = document.querySelectorAll('.thumb-btn');
-    const thumbStrip = document.getElementById('thumbStrip');
 
     const slideTitle = document.getElementById('slideTitle');
     const slideTag = document.getElementById('slideTag');
