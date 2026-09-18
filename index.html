@@ -2,7 +2,7 @@
 <html lang="ru" class="h-full">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>София — Коллекция воспоминаний</title>
 
   <!-- Typography & Libraries -->
@@ -65,27 +65,35 @@
     /* Hide scrollbars cleanly */
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Mobile viewport and notch fixes */
+    .safe-top {
+      padding-top: max(1rem, env(safe-area-inset-top));
+    }
+    .safe-bottom {
+      padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
   </style>
 </head>
 
-<body class="h-full bg-cinemaDark text-cream font-sans overflow-hidden select-none">
+<body class="h-[100dvh] w-full bg-cinemaDark text-cream font-sans overflow-hidden select-none">
   <div class="fixed inset-0 z-20 pointer-events-none film-grain"></div>
 
   <!-- Top Navigation & Controls Bar -->
-  <header class="fixed top-0 inset-x-0 z-30 flex items-center justify-between px-6 md:px-10 py-6 bg-gradient-to-b from-cinemaDark/90 via-cinemaDark/50 to-transparent backdrop-blur-[2px]">
-    <div class="flex items-center gap-4">
+  <header class="fixed top-0 inset-x-0 z-30 flex items-center justify-between px-4 sm:px-6 md:px-10 safe-top pb-4 bg-gradient-to-b from-cinemaDark/95 via-cinemaDark/60 to-transparent backdrop-blur-[2px]">
+    <div class="flex items-center gap-2 sm:gap-4">
       <span class="font-serif italic text-2xl md:text-3xl text-cream tracking-wide">Sofia</span>
       <span class="w-1.5 h-1.5 rounded-full bg-accentClay"></span>
       <span class="text-xs uppercase tracking-[0.25em] text-creamMuted/90 font-medium hidden sm:inline-block">Архив моментов</span>
     </div>
 
     <!-- Right Controls -->
-    <div class="flex items-center gap-3 md:gap-4">
+    <div class="flex items-center gap-2 sm:gap-3 md:gap-4">
       <!-- Autoplay Toggle Button -->
       <button 
         id="autoplayToggle" 
         onclick="toggleAutoplay()" 
-        class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/10 backdrop-blur-md text-xs font-medium text-cream tracking-wider uppercase transition-all duration-200"
+        class="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/10 backdrop-blur-md text-[11px] sm:text-xs font-medium text-cream tracking-wider uppercase transition-all duration-200"
         title="Пауза / Воспроизведение"
       >
         <svg id="playIcon" class="w-3 h-3 fill-current hidden" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -95,8 +103,8 @@
 
       <!-- Jump to Letter Button -->
       <button 
-        onclick="goToSlide(6)"
-        class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-accentClay/90 hover:bg-accentClay text-cream text-xs font-medium tracking-wider uppercase transition-all duration-200 shadow-lg shadow-accentClay/20"
+        onclick="goToSlide(6)" 
+        class="flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-accentClay/90 hover:bg-accentClay text-cream text-[11px] sm:text-xs font-medium tracking-wider uppercase transition-all duration-200 shadow-lg shadow-accentClay/20"
       >
         <span>Поздравление</span>
         <span class="text-xs">✦</span>
@@ -104,13 +112,13 @@
     </div>
   </header>
 
-  <main id="slidesContainer" class="relative w-full h-full">
+  <main id="slidesContainer" class="relative w-full h-[100dvh]">
 
     <!-- Slide 01: BMSTU Hallway Corridor -->
     <section class="slide-item active absolute inset-0 w-full h-full" data-index="0" data-title="Прогулки между парами" data-tag="МГТУ им. Баумана">
       <div class="absolute inset-0 overflow-hidden">
         <img 
-          src="Gemini_Generated_Image_xgmui6xgmui6xgmu.jpg"
+          src="Gemini_Generated_Image_xgmui6xgmui6xgmu.jpg" 
           alt="Коридоры Главного Здания" 
           class="w-full h-full object-cover object-center ken-burns"
         >
@@ -122,7 +130,7 @@
     <section class="slide-item absolute inset-0 w-full h-full" data-index="1" data-title="Лекционки" data-tag="Семинары и кофе">
       <div class="absolute inset-0 overflow-hidden">
         <img 
-          src="Gemini_Generated_Image_ispmo4ispmo4ispm.jpg" 
+          src="Gemini_Generated_Image_ispmo4ispmo4ispm (1).jpg" 
           alt="Большая лекционная" 
           class="w-full h-full object-cover object-center ken-burns"
         >
@@ -131,7 +139,7 @@
     </section>
 
     <!-- Slide 03: Networks Lab -->
-    <section class="slide-item absolute inset-0 w-full h-full" data-index="2" data-title="Веселые сдачи лабораторных по сетям">
+    <section class="slide-item absolute inset-0 w-full h-full" data-index="2" data-title="Веселые сдачи лабораторных по сетям" data-tag="Сдача сетей">
       <div class="absolute inset-0 overflow-hidden">
         <img 
           src="Gemini_Generated_Image_fgxn75fgxn75fgxn.jpg" 
@@ -143,7 +151,7 @@
     </section>
 
     <!-- Slide 04: Tennis Court -->
-    <section class="slide-item absolute inset-0 w-full h-full" data-index="3" data-title="Теннисный корт">
+    <section class="slide-item absolute inset-0 w-full h-full" data-index="3" data-title="Теннисный корт" data-tag="На корте">
       <div class="absolute inset-0 overflow-hidden">
         <img 
           src="Gemini_Generated_Image_77mzip77mzip77mz.jpg" 
@@ -155,7 +163,7 @@
     </section>
 
     <!-- Slide 05: Night Talks -->
-    <section class="slide-item absolute inset-0 w-full h-full" data-index="4" data-title="Посиделки" >
+    <section class="slide-item absolute inset-0 w-full h-full" data-index="4" data-title="Посиделки" data-tag="Ночные разговоры">
       <div class="absolute inset-0 overflow-hidden">
         <img 
           src="Gemini_Generated_Image_s9o0bxs9o0bxs9o0.jpg" 
@@ -167,7 +175,7 @@
     </section>
 
     <!-- Slide 06: Graduation at BMSTU -->
-    <section class="slide-item absolute inset-0 w-full h-full" data-index="5" data-title="Защита и выпускной" >
+    <section class="slide-item absolute inset-0 w-full h-full" data-index="5" data-title="Защита и выпускной" data-tag="МГТУ им. Баумана">
       <div class="absolute inset-0 overflow-hidden">
         <img 
           src="Gemini_Generated_Image_ds1hqqds1hqqds1h.jpg" 
@@ -179,8 +187,8 @@
     </section>
 
     <!-- Slide 07: Final Birthday Letter Reveal -->
-    <section class="slide-item absolute inset-0 w-full h-full flex items-center justify-center p-4 sm:p-8" data-index="6" data-title="С днем рождения" data-tag="Для Софии">
-      <!-- Atmospheric Backdrop blur of graduation -->
+    <section class="slide-item absolute inset-0 w-full h-full flex items-center justify-center p-3.5 sm:p-6 md:p-8" data-index="6" data-title="С днем рождения" data-tag="Для Софии">
+      <!-- Atmospheric Backdrop blur -->
       <div class="absolute inset-0 overflow-hidden opacity-30">
         <img 
           src="Gemini_Generated_Image_ds1hqqds1hqqds1h.jpg" 
@@ -188,35 +196,35 @@
           class="w-full h-full object-cover filter blur-2xl scale-110"
         >
       </div>
-      <div class="absolute inset-0 bg-cinemaDark/80"></div>
+      <div class="absolute inset-0 bg-cinemaDark/85"></div>
 
-      <!-- Letter Container -->
-      <div class="relative z-10 w-full max-w-2xl bg-cardBg/90 border border-white/10 backdrop-blur-2xl rounded-3xl p-7 sm:p-12 md:p-14 shadow-2xl flex flex-col items-center text-center">
-        <div class="w-12 h-12 rounded-full bg-accentClay/20 border border-accentClay/40 flex items-center justify-center text-accentClay mb-6">
+      <!-- Letter Container with Mobile Scroll Support -->
+      <div class="relative z-10 w-full max-w-2xl max-h-[82dvh] overflow-y-auto no-scrollbar bg-cardBg/95 border border-white/10 backdrop-blur-2xl rounded-3xl p-5 sm:p-10 md:p-14 shadow-2xl flex flex-col items-center text-center">
+        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accentClay/20 border border-accentClay/40 flex items-center justify-center text-accentClay mb-4 sm:mb-6 shrink-0">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
         </div>
 
-        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-medium text-cream mb-6 tracking-tight leading-snug">
+        <h2 class="font-serif text-2xl sm:text-4xl md:text-5xl font-medium text-cream mb-4 sm:mb-6 tracking-tight leading-snug">
           С днем рождения, <br><span class="italic text-accentGold">моя дорогая София!</span>
         </h2>
 
-        <div class="space-y-4 text-creamMuted text-base sm:text-lg leading-relaxed font-light text-left sm:text-center">
+        <div class="space-y-3 sm:space-y-4 text-creamMuted text-sm sm:text-base md:text-lg leading-relaxed font-light text-left sm:text-center">
           <p>
             Надеюсь, этот год пройдет еще лучше: пусть останутся только теплые воспоминания и появятся новые хорошие люди вокруг тебя.
           </p>
           <p>
             Чтобы работа и учеба давались легко, а главное — чтобы ты просто жила счастливо, без душевного беспокойства, с большим количеством отдыха и солнечных дней.
           </p>
-          <p class="font-normal text-cream pt-2 text-center">
+          <p class="font-normal text-cream pt-1 sm:pt-2 text-center">
             Ты уж точно заслуживаешь это все!
           </p>
         </div>
 
-        <div class="mt-8 pt-6 border-t border-white/10 w-full flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span class="text-xs tracking-widest uppercase font-mono text-creamMuted/70">МГТУ им. Баумана • Корт</span>
+        <div class="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/10 w-full flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 shrink-0">
+          <span class="text-[11px] sm:text-xs tracking-widest uppercase font-mono text-creamMuted/70">МГТУ им. Баумана • Корт</span>
           <button 
             onclick="fireConfetti()" 
-            class="px-6 py-2.5 rounded-full bg-accentClay hover:bg-accentClay/90 text-cream text-xs uppercase tracking-widest font-semibold transition-all duration-200 shadow-lg shadow-accentClay/30 flex items-center gap-2 cursor-pointer active:scale-95"
+            class="w-full sm:w-auto px-6 py-2.5 rounded-full bg-accentClay hover:bg-accentClay/90 text-cream text-xs uppercase tracking-widest font-semibold transition-all duration-200 shadow-lg shadow-accentClay/30 flex items-center justify-center gap-2 cursor-pointer active:scale-95"
           >
             <span>Залп праздника</span>
             <span>✦</span>
@@ -227,37 +235,38 @@
 
   </main>
 
-  <div id="captionOverlay" class="fixed left-6 md:left-10 bottom-28 md:bottom-32 z-30 pointer-events-none transition-all duration-700">
-    <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-[11px] font-mono tracking-widest text-accentGold uppercase mb-2">
-      <span id="slideTag">МГТУ им. Баумана • 2024</span>
+  <!-- Captions -->
+  <div id="captionOverlay" class="fixed left-4 sm:left-6 md:left-10 bottom-24 sm:bottom-28 md:bottom-32 z-30 pointer-events-none transition-all duration-700 max-w-[85vw]">
+    <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-[10px] sm:text-[11px] font-mono tracking-widest text-accentGold uppercase mb-1.5 sm:mb-2">
+      <span id="slideTag">МГТУ им. Баумана</span>
     </div>
-    <h3 id="slideTitle" class="font-serif text-3xl sm:text-5xl md:text-6xl text-cream font-normal tracking-tight drop-shadow-md">
+    <h3 id="slideTitle" class="font-serif text-2xl sm:text-4xl md:text-6xl text-cream font-normal tracking-tight drop-shadow-md leading-tight">
       Коридоры Главного Здания
     </h3>
   </div>
 
-  <!-- Big Lateral Navigation Buttons (Touch & Desktop) -->
+  <!-- Lateral Navigation Buttons -->
   <button 
     onclick="prevSlide()" 
-    class="fixed left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 md:w-14 md:h-14 rounded-full bg-cinemaDark/40 hover:bg-cinemaDark/80 border border-white/10 backdrop-blur-md flex items-center justify-center text-cream hover:text-accentGold transition-all duration-200 hover:scale-105 active:scale-95"
+    class="fixed left-2 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 md:w-14 md:h-14 rounded-full bg-cinemaDark/50 hover:bg-cinemaDark/80 border border-white/10 backdrop-blur-md flex items-center justify-center text-cream hover:text-accentGold transition-all duration-200 active:scale-95"
     title="Предыдущий кадр"
   >
-    <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/></svg>
+    <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/></svg>
   </button>
 
   <button 
     onclick="nextSlide()" 
-    class="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 md:w-14 md:h-14 rounded-full bg-cinemaDark/40 hover:bg-cinemaDark/80 border border-white/10 backdrop-blur-md flex items-center justify-center text-cream hover:text-accentGold transition-all duration-200 hover:scale-105 active:scale-95"
+    class="fixed right-2 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 md:w-14 md:h-14 rounded-full bg-cinemaDark/50 hover:bg-cinemaDark/80 border border-white/10 backdrop-blur-md flex items-center justify-center text-cream hover:text-accentGold transition-all duration-200 active:scale-95"
     title="Следующий кадр"
   >
-    <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/></svg>
+    <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/></svg>
   </button>
 
   <!-- Bottom Timeline & Filmstrip Bar -->
-  <footer class="fixed bottom-0 inset-x-0 z-30 bg-gradient-to-t from-cinemaDark via-cinemaDark/80 to-transparent pt-6 pb-5 px-6 md:px-10">
-    <div class="max-w-6xl mx-auto flex flex-col gap-3">
+  <footer class="fixed bottom-0 inset-x-0 z-30 bg-gradient-to-t from-cinemaDark via-cinemaDark/85 to-transparent pt-4 sm:pt-6 safe-bottom px-4 sm:px-6 md:px-10">
+    <div class="max-w-6xl mx-auto flex flex-col gap-2.5 sm:gap-3">
       
-      <!-- Top Meta Info & Progress counter -->
+      <!-- Counter -->
       <div class="flex items-center justify-between text-xs text-creamMuted font-mono">
         <div class="flex items-center gap-2">
           <span id="currentNumber" class="text-cream font-medium">01</span>
@@ -265,12 +274,12 @@
           <span>07</span>
         </div>
         <div class="flex items-center gap-2">
-          <span class="text-[10px] tracking-widest uppercase opacity-70"> ← →</span>
+          <span class="text-[10px] tracking-widest uppercase opacity-70 hidden sm:inline">← →</span>
         </div>
       </div>
 
       <!-- Segmented Interactive Timeline Bar -->
-      <div class="grid grid-cols-7 gap-1.5 sm:gap-2 h-1 w-full cursor-pointer py-1">
+      <div class="grid grid-cols-7 gap-1 sm:gap-2 h-1 w-full cursor-pointer py-1">
         <div onclick="goToSlide(0)" class="timeline-bar h-1 rounded-full bg-white/20 overflow-hidden relative"><div class="bar-fill h-full bg-cream transition-all duration-300 w-full"></div></div>
         <div onclick="goToSlide(1)" class="timeline-bar h-1 rounded-full bg-white/20 overflow-hidden relative"><div class="bar-fill h-full bg-cream transition-all duration-300 w-0"></div></div>
         <div onclick="goToSlide(2)" class="timeline-bar h-1 rounded-full bg-white/20 overflow-hidden relative"><div class="bar-fill h-full bg-cream transition-all duration-300 w-0"></div></div>
@@ -280,27 +289,27 @@
         <div onclick="goToSlide(6)" class="timeline-bar h-1 rounded-full bg-white/20 overflow-hidden relative"><div class="bar-fill h-full bg-accentGold transition-all duration-300 w-0"></div></div>
       </div>
 
-      <!-- Filmstrip Thumbnails (Desktop / Tablet) -->
-      <div class="hidden sm:flex items-center justify-center gap-3 pt-2 overflow-x-auto no-scrollbar">
-        <button onclick="goToSlide(0)" class="thumb-btn h-11 w-16 rounded-lg overflow-hidden border-2 border-accentGold opacity-100 transition-all duration-200">
+      <!-- Filmstrip Thumbnails -->
+      <div id="thumbStrip" class="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 pt-1 sm:pt-2 overflow-x-auto no-scrollbar scroll-smooth">
+        <button onclick="goToSlide(0)" class="thumb-btn shrink-0 h-9 w-13 sm:h-11 sm:w-16 rounded-md sm:rounded-lg overflow-hidden border-2 border-accentGold opacity-100 transition-all duration-200">
           <img src="Gemini_Generated_Image_xgmui6xgmui6xgmu.jpg" class="w-full h-full object-cover">
         </button>
-        <button onclick="goToSlide(1)" class="thumb-btn h-11 w-16 rounded-lg overflow-hidden border border-white/20 opacity-40 hover:opacity-80 transition-all duration-200">
+        <button onclick="goToSlide(1)" class="thumb-btn shrink-0 h-9 w-13 sm:h-11 sm:w-16 rounded-md sm:rounded-lg overflow-hidden border border-white/20 opacity-40 hover:opacity-80 transition-all duration-200">
           <img src="Gemini_Generated_Image_ispmo4ispmo4ispm (1).jpg" class="w-full h-full object-cover">
         </button>
-        <button onclick="goToSlide(2)" class="thumb-btn h-11 w-16 rounded-lg overflow-hidden border border-white/20 opacity-40 hover:opacity-80 transition-all duration-200">
+        <button onclick="goToSlide(2)" class="thumb-btn shrink-0 h-9 w-13 sm:h-11 sm:w-16 rounded-md sm:rounded-lg overflow-hidden border border-white/20 opacity-40 hover:opacity-80 transition-all duration-200">
           <img src="Gemini_Generated_Image_fgxn75fgxn75fgxn.jpg" class="w-full h-full object-cover">
         </button>
-        <button onclick="goToSlide(3)" class="thumb-btn h-11 w-16 rounded-lg overflow-hidden border border-white/20 opacity-40 hover:opacity-80 transition-all duration-200">
+        <button onclick="goToSlide(3)" class="thumb-btn shrink-0 h-9 w-13 sm:h-11 sm:w-16 rounded-md sm:rounded-lg overflow-hidden border border-white/20 opacity-40 hover:opacity-80 transition-all duration-200">
           <img src="Gemini_Generated_Image_77mzip77mzip77mz.jpg" class="w-full h-full object-cover">
         </button>
-        <button onclick="goToSlide(4)" class="thumb-btn h-11 w-16 rounded-lg overflow-hidden border border-white/20 opacity-40 hover:opacity-80 transition-all duration-200">
+        <button onclick="goToSlide(4)" class="thumb-btn shrink-0 h-9 w-13 sm:h-11 sm:w-16 rounded-md sm:rounded-lg overflow-hidden border border-white/20 opacity-40 hover:opacity-80 transition-all duration-200">
           <img src="Gemini_Generated_Image_s9o0bxs9o0bxs9o0.jpg" class="w-full h-full object-cover">
         </button>
-        <button onclick="goToSlide(5)" class="thumb-btn h-11 w-16 rounded-lg overflow-hidden border border-white/20 opacity-40 hover:opacity-80 transition-all duration-200">
+        <button onclick="goToSlide(5)" class="thumb-btn shrink-0 h-9 w-13 sm:h-11 sm:w-16 rounded-md sm:rounded-lg overflow-hidden border border-white/20 opacity-40 hover:opacity-80 transition-all duration-200">
           <img src="Gemini_Generated_Image_ds1hqqds1hqqds1h.jpg" class="w-full h-full object-cover">
         </button>
-        <button onclick="goToSlide(6)" class="thumb-btn h-11 w-16 rounded-lg overflow-hidden border border-white/20 opacity-40 hover:opacity-80 transition-all duration-200 bg-accentClay/40 flex items-center justify-center text-xs font-serif italic text-cream">
+        <button onclick="goToSlide(6)" class="thumb-btn shrink-0 h-9 w-13 sm:h-11 sm:w-16 rounded-md sm:rounded-lg overflow-hidden border border-white/20 opacity-40 hover:opacity-80 transition-all duration-200 bg-accentClay/40 flex items-center justify-center text-[10px] sm:text-xs font-serif italic text-cream">
           Письмо
         </button>
       </div>
@@ -314,6 +323,7 @@
     const totalSlides = slides.length;
     const barFills = document.querySelectorAll('.bar-fill');
     const thumbBtns = document.querySelectorAll('.thumb-btn');
+    const thumbStrip = document.getElementById('thumbStrip');
 
     const slideTitle = document.getElementById('slideTitle');
     const slideTag = document.getElementById('slideTag');
@@ -322,7 +332,7 @@
 
     let autoplay = true;
     let autoplayInterval = null;
-    const SLIDE_DURATION = 6500; // 6.5s per slide
+    const SLIDE_DURATION = 6500;
 
     function updateSlides() {
       slides.forEach((slide, idx) => {
@@ -333,13 +343,11 @@
         }
       });
 
-      // Update captions
       const activeSlide = slides[currentIndex];
       const title = activeSlide.getAttribute('data-title') || '';
       const tag = activeSlide.getAttribute('data-tag') || '';
 
       if (currentIndex === totalSlides - 1) {
-        // Hide floating caption on the greeting letter slide
         captionOverlay.classList.add('opacity-0', 'translate-y-4');
       } else {
         captionOverlay.classList.remove('opacity-0', 'translate-y-4');
@@ -347,32 +355,27 @@
         slideTag.textContent = tag;
       }
 
-      // Update numeric counter
       currentNumber.textContent = String(currentIndex + 1).padStart(2, '0');
 
-      // Update Segmented Timeline Bars
       barFills.forEach((bar, idx) => {
-        if (idx < currentIndex) {
-          bar.style.width = '100%';
-        } else if (idx === currentIndex) {
+        if (idx <= currentIndex) {
           bar.style.width = '100%';
         } else {
           bar.style.width = '0%';
         }
       });
 
-      // Update Filmstrip Thumbnails
       thumbBtns.forEach((thumb, idx) => {
         if (idx === currentIndex) {
           thumb.classList.remove('opacity-40', 'border-white/20');
           thumb.classList.add('opacity-100', 'border-accentGold', 'scale-105');
+          thumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         } else {
           thumb.classList.remove('opacity-100', 'border-accentGold', 'scale-105');
           thumb.classList.add('opacity-40', 'border-white/20');
         }
       });
 
-      // Trigger celebratory confetti automatically when reaching the final letter
       if (currentIndex === totalSlides - 1) {
         fireConfetti();
       }
@@ -424,17 +427,16 @@
       if (autoplay) {
         playIcon.classList.add('hidden');
         pauseIcon.classList.remove('hidden');
-        autoplayText.textContent = 'Слайд-шоу';
+        if (autoplayText) autoplayText.textContent = 'Слайд-шоу';
         startAutoplay();
       } else {
         pauseIcon.classList.add('hidden');
         playIcon.classList.remove('hidden');
-        autoplayText.textContent = 'Пауза';
+        if (autoplayText) autoplayText.textContent = 'Пауза';
         stopAutoplay();
       }
     }
 
-    // Keyboard controls (Arrow keys and Space)
     window.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight' || e.key === ' ') {
         nextSlide();
@@ -443,7 +445,6 @@
       }
     });
 
-    // Mobile Swipe Gestures
     let touchStartX = 0;
     let touchEndX = 0;
 
@@ -458,7 +459,7 @@
 
     function handleSwipe() {
       const swipeDistance = touchEndX - touchStartX;
-      if (Math.abs(swipeDistance) > 45) {
+      if (Math.abs(swipeDistance) > 40) {
         if (swipeDistance < 0) {
           nextSlide();
         } else {
@@ -467,7 +468,6 @@
       }
     }
 
-    // Celebratory Confetti Burst
     function fireConfetti() {
       const warmColors = ['#C26A4D', '#E2C799', '#D6DE3D', '#FFFFFF', '#415243'];
       
@@ -496,7 +496,6 @@
       }, 250);
     }
 
-    // Initialize on page load
     window.addEventListener('DOMContentLoaded', () => {
       updateSlides();
       startAutoplay();
